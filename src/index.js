@@ -6,7 +6,6 @@ const {ApolloServer} = require('apollo-server')
 
 const Query			= require('./resolvers/Query')
 const Mutation		= require('./resolvers/Mutation')
-const Subscription	= require('./resolvers/Subscription')
 const User			= require('./resolvers/User')
 const Post			= require('./resolvers/Post')
 
@@ -17,7 +16,6 @@ const server = new ApolloServer({
 	resolvers: {
 		Query,
 		Mutation,
-		Subscription,
 		User,
 		Post
 	},

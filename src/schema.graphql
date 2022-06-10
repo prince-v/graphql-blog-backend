@@ -1,5 +1,6 @@
 
 type Query {
+	# 'user' & 'users' are only for dev purposes
 	user(id: ID!): User
 	users: [User!]!
 
