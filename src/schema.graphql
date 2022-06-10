@@ -1,0 +1,49 @@
+
+type Query {
+	user(id: ID!): User
+	users: [User!]!
+
+	post(id: ID!): Post
+	posts: [Post!]!
+
+	feed(filter: String, skip: Int, take: Int): [Post!]!
+}
+
+type Mutation {
+	createUser(username: String!, password: String!): User!
+	updateUser(id: ID!, username: String, password: String): User!
+	deleteUser(id: ID!): String!
+
+	createPost(userId: ID!, title: String!, content: String!): Post!
+	updatePost(id: ID!, title: String, content: String, likedBy: ID, comment: PostCommentInput): Post!
+	deletePost(id: ID!): String!
+}
+
+type Subscription {
+	newPost: Post
+}
+
+type User {
+	id: ID!
+	username: String!
+	posts: [Post]!
+}
+
+type Post {
+	id: ID!
+	user: User!
+	title: String!
+	content: String!
+	likes: Int!
+	comments: [PostComment!]!
+}
+
+input PostCommentInput {
+	userId: ID!
+	content: String!
+}
+
+type PostComment {
+	user: User!
+	content: String!
+}
